@@ -44,33 +44,29 @@ namespace OnBoardingTaskVersion2.Controllers
         {
             StoreManagementEntitiesdb.ProductSolds.Add(ps);
             return Json(StoreManagementEntitiesdb.SaveChanges());
-
         }
 
         public JsonResult GetSaleById(int Id)
         {
             StoreManagementEntitiesdb.Configuration.ProxyCreationEnabled = false;
-
             // using Query syntax
             var sale = (from s in StoreManagementEntitiesdb.ProductSolds
                          where s.Id == Id
                          select s).FirstOrDefault();
-
-            return Json(sale, JsonRequestBehavior.AllowGet);
-            
+            return Json(sale, JsonRequestBehavior.AllowGet);            
         }
+
         public JsonResult UpdateSale(ProductSold psold)
         {
             StoreManagementEntitiesdb.Entry(psold).State = EntityState.Modified;
             return Json(StoreManagementEntitiesdb.SaveChanges());
-
         }
+
         public JsonResult DeleteSale(int Id)
         {
             var psold = StoreManagementEntitiesdb.ProductSolds.Find(Id);
             StoreManagementEntitiesdb.ProductSolds.Remove(psold);
             return Json(StoreManagementEntitiesdb.SaveChanges());
-
         }
     }
 }

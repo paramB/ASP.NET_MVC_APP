@@ -31,22 +31,18 @@ namespace OnBoardingTaskVersion2.Controllers
         }
 
         public JsonResult AddStore(Store store)
-        {
-            
+        {            
             StoreManagementEntitiesdb.Entry(store).State = EntityState.Added;
             return Json(StoreManagementEntitiesdb.SaveChanges());
-
         }
 
         public JsonResult GetStoreById(int Id)
         {
             StoreManagementEntitiesdb.Configuration.ProxyCreationEnabled = false;
-
             // using Query syntax
             var store = (from s in StoreManagementEntitiesdb.Stores
                            where s.Id == Id
                            select s).FirstOrDefault();
-
             return Json(store, JsonRequestBehavior.AllowGet);
         }
 
@@ -56,8 +52,7 @@ namespace OnBoardingTaskVersion2.Controllers
         }
 
         public JsonResult DeleteStore(int Id)
-        {
-            
+        {            
             Store store = StoreManagementEntitiesdb.Stores.Find(Id);
             StoreManagementEntitiesdb.Stores.Remove(store);
             return Json(StoreManagementEntitiesdb.SaveChanges());

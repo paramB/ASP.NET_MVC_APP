@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using OnBoardingTaskVersion2.Models;
 
-
 namespace OnBoardingTaskVersion2.Controllers
 {
     public class ProductController : Controller
@@ -33,21 +32,18 @@ namespace OnBoardingTaskVersion2.Controllers
 
         public JsonResult AddProduct(Product product)
         {
-            //StoreManagementEntitiesdb.product.Add(product);
+            
             StoreManagementEntitiesdb.Entry(product).State = EntityState.Added;
             return Json(StoreManagementEntitiesdb.SaveChanges());
-
         }
 
         public JsonResult GetProductById(int Id)
         {
             StoreManagementEntitiesdb.Configuration.ProxyCreationEnabled = false;
-
             // using Query syntax
             var product = (from prod in StoreManagementEntitiesdb.Products
                             where prod.Id == Id
                             select prod).FirstOrDefault();
-
             return Json(product, JsonRequestBehavior.AllowGet);
         }
 

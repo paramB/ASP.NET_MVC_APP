@@ -16,13 +16,11 @@ namespace OnBoardingTaskVersion2.Controllers
         public ActionResult Index()
         {
             return View();
-
         }
 
         public ActionResult Create()
         {
             return View();
-
         }
         
         public JsonResult GetCustomerList()
@@ -35,19 +33,16 @@ namespace OnBoardingTaskVersion2.Controllers
                 Age = x.Age,
                 Address = x.Address,              
             }).ToList();
-
             return Json(customers, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetCustomerById(int Id)
         {
             StoreManagementEntitiesdb.Configuration.ProxyCreationEnabled = false;
-
             // using Query syntax
             var customer = (from cust in StoreManagementEntitiesdb.Customers
                            where cust.Id == Id
                            select cust).FirstOrDefault();
-
             return Json(customer, JsonRequestBehavior.AllowGet);
         }
 
@@ -56,7 +51,6 @@ namespace OnBoardingTaskVersion2.Controllers
             //StoreManagementEntitiesdb.Customers.Add(customer);
             StoreManagementEntitiesdb.Entry(customer).State = EntityState.Added;
             return Json(StoreManagementEntitiesdb.SaveChanges());
-
         }
 
         public JsonResult UpdateCustomer(Customer customer)
@@ -67,7 +61,6 @@ namespace OnBoardingTaskVersion2.Controllers
 
         public JsonResult DeleteCustomer(int Id)
         {           
-            //StoreManagementEntitiesdb.Entry(customer).State = EntityState.Deleted;
             Customer customer = StoreManagementEntitiesdb.Customers.Find(Id);
             StoreManagementEntitiesdb.Customers.Remove(customer);
             return Json(StoreManagementEntitiesdb.SaveChanges());
