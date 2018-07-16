@@ -66,5 +66,4 @@ namespace OnBoardingTaskVersion2.Controllers
             return Json(StoreManagementEntitiesdb.SaveChanges());
         }
     }
-
 }

@@ -31,8 +31,7 @@ namespace OnBoardingTaskVersion2.Controllers
         }
 
         public JsonResult AddProduct(Product product)
-        {
-            
+        {            
             StoreManagementEntitiesdb.Entry(product).State = EntityState.Added;
             return Json(StoreManagementEntitiesdb.SaveChanges());
         }
