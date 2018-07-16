@@ -11,7 +11,7 @@ namespace OnBoardingTaskVersion2.Controllers
     public class CustomerController : Controller
     {
         StoreManagementEntities StoreManagementEntitiesdb = new StoreManagementEntities();
-
+        
         // GET: Customer
         public ActionResult Index()
         {
@@ -64,7 +64,6 @@ namespace OnBoardingTaskVersion2.Controllers
             Customer customer = StoreManagementEntitiesdb.Customers.Find(Id);
             StoreManagementEntitiesdb.Customers.Remove(customer);
             return Json(StoreManagementEntitiesdb.SaveChanges());
-
         }
     }
 
