@@ -1,0 +1,72 @@
+﻿@model OnBoardingTaskVersion2.Models.Product
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2></h2>
+
+<p>
+    <button type="button" id="btnAddProduct" class="btn btn-success" data-toggle="modal" data-target="#productModal" onclick="resetModal();">Add Product</button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product Name
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody class="tbody" id="setProductList"></tbody>
+</table>
+
+<div class="modal fade" id="productModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="modalTitle"></h4>
+            </div>
+
+            <div class="modal-body">
+                @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "createProductForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                @Html.HiddenFor(model => model.Id, new { @id = "productId" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "productName" } })                               
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", @id = "productPrice" } })                               
+                            </div>
+                        </div>                        
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                <button typ="button" class="btn btn-success" id="createBtn" onclick="addProduct();">Create</button>
+                <button type="button" class="btn btn-success" id="updateBtn" style="display:none;" onclick="updateProduct();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")    
+    <script src="~/Scripts/product.js"></script>
+}
