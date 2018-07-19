@@ -16,8 +16,8 @@ function loadIndex() {
                 html += '<tr>';
                 html += '<td>' + item.StoreName + '</td>';
                 html += '<td>' + item.Address + '</td>';
-                html += '<td><button class="btn btn-warning" onclick="getStoreById(' + item.Id + ')"><span class="glyphicon glyphicon-edit"></span></button>' + ' | ' +
-                    '<button class="btn btn-danger" onclick="deleteStore(' + item.Id + ')"><span class="glyphicon glyphicon-trash"></span></button></td >';
+                html += '<td><button class="btn btn-warning" title="Edit Store" data-toggle="tooltip" onclick="getStoreById(' + item.Id + ')"><span class="glyphicon glyphicon-edit"></span></button>' + ' | ' +
+                    '<button class="btn btn-danger" title="Delete Store" data-toggle="tooltip" onclick="deleteStore(' + item.Id + ')"><span class="glyphicon glyphicon-trash"></span></button></td >';
                 html += '</tr>';
             });
             $('#setStoreList').html(html);

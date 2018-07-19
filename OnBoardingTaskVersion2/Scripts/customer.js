@@ -17,8 +17,8 @@ function loadIndex() {
                 html += '<td>' + item.CustomerName + '</td>';
                 html += '<td>' + item.Age + '</td>';
                 html += '<td>' + item.Address + '</td>';
-                html += '<td><button class="btn btn-warning" onclick="getCustomerById(' + item.Id +')"><span class="glyphicon glyphicon-edit"></span></button>' + ' | ' +
-                    '<button class="btn btn-danger" onclick="deleteCustomer(' + item.Id +')"><span class="glyphicon glyphicon-trash"></span></button></td >';                
+                html += '<td><button class="btn btn-warning" title="Edit Customer" data-toggle="tooltip" onclick="getCustomerById(' + item.Id +')"><span class="glyphicon glyphicon-edit"></span></button>' + ' | ' +
+                    '<button class="btn btn-danger" title="Delete Customer" data-toggle="tooltip" onclick="deleteCustomer(' + item.Id +')"><span class="glyphicon glyphicon-trash"></span></button></td >';                
                 html += '</tr>';
             });
             $('#setCustomerList').html(html);

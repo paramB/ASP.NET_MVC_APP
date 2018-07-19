@@ -33,8 +33,8 @@ function loadIndex() {
                 html += '<td>' + item.PName + '</td>';
                 html += '<td>' + item.SName + '</td>';
                 html += '<td>' + newDate + '</td>';
-                html += '<td><button class="btn btn-warning" onclick="getSaleById(' + item.Id + ')"><span class="glyphicon glyphicon-edit"></span></button>' + ' | ' +
-                    '<button class="btn btn-danger" onclick="deleteSale(' + item.Id + ')"><span class="glyphicon glyphicon-trash"></span></button></td >';
+                html += '<td><button class="btn btn-warning" title="Edit Sale" data-toggle="tooltip" onclick="getSaleById(' + item.Id + ')"><span class="glyphicon glyphicon-edit"></span></button>' + ' | ' +
+                    '<button class="btn btn-danger" title="Delete Sale" data-toggle="tooltip" onclick="deleteSale(' + item.Id + ')"><span class="glyphicon glyphicon-trash"></span></button></td >';
                 html += '</tr>';
             });
             $('#setSalesList').html(html);

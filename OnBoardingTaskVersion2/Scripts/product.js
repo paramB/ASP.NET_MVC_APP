@@ -16,8 +16,8 @@ function loadIndex() {
                 html += '<tr>';
                 html += '<td>' + item.ProductName + '</td>';
                 html += '<td>' + item.Price + '</td>';
-                html += '<td><button class="btn btn-warning" onclick="getProductById(' + item.Id + ')"><span class="glyphicon glyphicon-edit"></span></button>' + ' | ' +
-                    '<button class="btn btn-danger" onclick="deleteProduct(' + item.Id + ')"><span class="glyphicon glyphicon-trash"></span></button></td >';
+                html += '<td><button class="btn btn-warning" title="Edit Product" data-toggle="tooltip" onclick="getProductById(' + item.Id + ')"><span class="glyphicon glyphicon-edit"></span></button>' + ' | ' +
+                    '<button class="btn btn-danger" title="Delete Product" data-toggle="tooltip" onclick="deleteProduct(' + item.Id + ')"><span class="glyphicon glyphicon-trash"></span></button></td >';
                 html += '</tr>';
             });
             $('#setProductList').html(html);
