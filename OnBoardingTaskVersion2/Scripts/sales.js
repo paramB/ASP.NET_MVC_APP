@@ -1,14 +1,14 @@
 ﻿$(document).ready(function () {
     //call Load Index Data on document ready
-    loadIndex();
-    
-       $('input[type=datetime]').datepicker({
-            dateFormat: "dd/M/yy",
-            changeMonth: true,
-            changeYear: true,
-            yearRange: "-60:+0",
-            maxDate: new Date()
-        });
+    loadIndex(); 
+    //date picker
+    $('input[type=datetime]').datepicker({
+        dateFormat: "dd/M/yy",
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-60:+0",
+        maxDate: new Date()
+    });
 });
 
 //Load Index Data
@@ -18,8 +18,7 @@ function loadIndex() {
         url: "/ProductSold/GetSalesList",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (result) {
-          
+        success: function (result) {          
             var html = '';
             $.each(result, function (key, item) {
                 var date = new Date(parseInt(item.DateSold.substr(6)));                
@@ -61,7 +60,6 @@ function addSale() {
             alert(errormessage.responseText);
         }
     });
-
 }
 
 // Get sale record based on ID to edit
@@ -94,7 +92,6 @@ function getSaleById(SId) {
             alert(errormessage.responseText);
         }
     });
-
 }
 
 //update sale record
@@ -106,7 +103,6 @@ function updateSale() {
         "StoreId": $('#StoreId').val(),
         "DateSold": $('#dateSold').val()
     };
-
     $.ajax({
         type: "POST",
         url: "/ProductSold/UpdateSale",
@@ -122,7 +118,6 @@ function updateSale() {
             alert(errormessage.responseText);
         }
     });
-
 }
 
 function deleteSale(SId) {
