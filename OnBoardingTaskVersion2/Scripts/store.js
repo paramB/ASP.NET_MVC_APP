@@ -44,7 +44,6 @@ function addStore() {
             alert(errormessage.responseText);
         }
     });
-
 }
 
 // get store record based on ID to edit
