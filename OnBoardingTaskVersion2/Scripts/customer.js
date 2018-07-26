@@ -70,7 +70,6 @@ function getCustomerById(CustId) {
 
 //update customer record
 function updateCustomer() {
-    //var data = $('#createCustomerForm').serialize();
     var data = {
         "Id": $('#custId').val(),
         "Name": $('#custName').val(),
